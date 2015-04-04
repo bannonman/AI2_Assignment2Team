@@ -28,11 +28,11 @@ cat_dfs = censusData.drop(numeric_features + ['Cover_Type'],axis=1)
 #transpose into array of dictionaries (one dict per instance) of feature:level pairs
 cat_dfs = cat_dfs.T.to_dict().values()
 #convert to numeric encoding
-vectorizer = DictVectorizer( sparse = False )
-vec_cat_dfs = vectorizer.fit_transform(cat_dfs) 
+#vectorizer = DictVectorizer( sparse = False )
+#vec_cat_dfs = vectorizer.fit_transform(cat_dfs) 
 # Merge Categorical and Numeric Descriptive Features
-train_dfs = np.hstack((numeric_dfs.as_matrix(), vec_cat_dfs ))
-print(train_dfs)
+#train_dfs = np.hstack((numeric_dfs.as_matrix(), cat_dfs ))
+print(cat_dfs)
 
 
 # read in query data and drop final column : Cover_Type
