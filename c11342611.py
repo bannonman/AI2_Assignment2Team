@@ -24,13 +24,40 @@ numeric_dfs = Tdata[numeric_features]
 cat_dfs = Tdata.drop(numeric_features + ['Cover_Type'],axis=1)
 
 cat_dfs = cat_dfs.to_dict()
-print(cat_dfs[0])
-time.sleep(15)
 
+#Jam array just to test
+X = np.array([ 
+[ numeric_dfs['Aspect'][1] , numeric_dfs['Elevation'][1] ],
+[ numeric_dfs['Aspect'][2] , numeric_dfs['Elevation'][2] ],
+[ numeric_dfs['Aspect'][3] , numeric_dfs['Elevation'][3] ],
+[ numeric_dfs['Aspect'][4] , numeric_dfs['Elevation'][4] ],
+[ numeric_dfs['Aspect'][5] , numeric_dfs['Elevation'][5] ],
+[ numeric_dfs['Aspect'][6] , numeric_dfs['Elevation'][6] ],
+[ numeric_dfs['Aspect'][7] , numeric_dfs['Elevation'][7] ],
+[ numeric_dfs['Aspect'][8] , numeric_dfs['Elevation'][8] ],
+[ numeric_dfs['Aspect'][9] , numeric_dfs['Elevation'][9] ],
+[ numeric_dfs['Aspect'][10] , numeric_dfs['Elevation'][10] ],
+[ numeric_dfs['Aspect'][11] , numeric_dfs['Elevation'][11] ],
+[ numeric_dfs['Aspect'][12] , numeric_dfs['Elevation'][12] ],
+[ numeric_dfs['Aspect'][13] , numeric_dfs['Elevation'][13] ],
+[ numeric_dfs['Aspect'][14] , numeric_dfs['Elevation'][14] ],
+[ numeric_dfs['Aspect'][15] , numeric_dfs['Elevation'][15] ], ])
+
+#Stores the outcome value in the training set
+y = [targetLabels[1],targetLabels[2],targetLabels[3],targetLabels[4],targetLabels[5],targetLabels[6],targetLabels[7],targetLabels[8],targetLabels[9],targetLabels[10],targetLabels[11],targetLabels[12],targetLabels[13],targetLabels[14],targetLabels[15]]
+
+#Algorithm used, no idea what this does
+clf = svm.SVC(kernel="linear", C=0.1)
+
+#Again read above
+clf.fit(X,y)
+
+#This is were it does the prediction
+print(clf.predict([201,2612]))
 
 #convert to numeric encoding
-vectorizer = DictVectorizer( sparse = False )
-vec_cat_dfs = vectorizer.fit_transform(cat_dfs) 
+#vectorizer = DictVectorizer( sparse = False )
+#vec_cat_dfs = vectorizer.fit_transform(cat_dfs) 
 # Merge Categorical and Numeric Descriptive Features
-train_dfs = np.hstack((numeric_dfs.as_matrix(), cat_dfs ))
-print('Prediction:',train_dfs)
+#train_dfs = np.hstack((numeric_dfs.as_matrix(), cat_dfs ))
+#print('Prediction:',train_dfs)
