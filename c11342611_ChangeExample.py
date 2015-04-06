@@ -52,7 +52,7 @@ cat_dfs= numeric_dfs.T.to_dict().values()
 ids = Qdata['Id']
 #q = {'Elevation':[2000,2516],'Aspect':[23,23],'Slope':[6,6],'Horizontal_Distance_To_Hydrology':[150,150],'Vertical_Distance_To_Hydrology':[4,4],'Horizontal_Distance_To_Roadways':[658,658],'Hillshade_9am':[216,216],'Hillshade_Noon':[227,227],'Hillshade_3pm':[147,147],'Horizontal_Distance_To_Fire_Points':[5541,5541]}
 col_names = ['Elevation','Aspect','Slope','Horizontal_Distance_To_Hydrology','Vertical_Distance_To_Hydrology','Horizontal_Distance_To_Roadways','Hillshade_9am','Hillshade_Noon','Hillshade_3pm','Horizontal_Distance_To_Fire_Points']
-qdf = pd.DataFrame.from_dict(cat_dfs,orient="columns")
+qdf = pd.DataFrame.from_dict(list(cat_dfs),orient="columns")
 #extract the numeric features
 q_num = qdf[numeric_features].as_matrix() 
 #convert the categorical features
