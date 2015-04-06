@@ -63,7 +63,7 @@ q_vec_dfs = vectorizer.transform(q_cat_dfs)
 #merge the numeric and categorical features
 query = np.hstack((q_num, q_vec_dfs ))
 #Use the model to make predictions for the 2 queries
-predictions = clf.predict(query[:])
+predictions = decTreeModel.predict(query[:])
 print("Predictions!")
 print("------------------------------")
 #predictList = []
