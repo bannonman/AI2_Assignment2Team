@@ -67,12 +67,10 @@ query = np.hstack((q_num, q_vec_dfs ))
 predictions = decTreeModel.predict(query[:])
 print("Predictions!")
 print("------------------------------")
-print(set(ids[:]))
-#f = open("data/predictions.txt", 'w')
+f = open("data/predictions.txt", 'w')
 
-#for num in range(0,145864):
-   # f.write(ids[num]+','+predictions[num]+'\n')
+for num in range(0,145864):
+       f.write(ids[num]+','+predictions[num]+'\n')
 
-
-#print(ids[:]+':'+predictions) 
+f.close() 
 
