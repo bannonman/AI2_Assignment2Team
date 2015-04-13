@@ -13,6 +13,9 @@ __status__ = "Assignment 2 AI2"
 
 
 from sklearn.feature_extraction import DictVectorizer
+from sklearn import cross_validation
+from sklearn.cross_validation import train_test_split
+from sklearn.metrics import accuracy_score
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
@@ -77,6 +80,18 @@ def main():
        
        print("Report saved")
        print(datetime.datetime.now())
+       
+       #Split the data: 60% training : 40% test set
+       instances_train, instances_test, target_train, target_test = cross_validation.train_test_split(train_dfs, targetLabels, test_size=0.74, random_state=0)
+
+       #run a 10 fold cross validation on this model using the full census data
+       scores=cross_validation.cross_val_score(clf, instances_train, target_train, cv=10)
+       #the cross validaton function returns an accuracy score for each fold
+       print("Entropy based Model:")
+       print("Score by fold: " + str(scores))
+       #we can output the mean accuracy score and standard deviation as follows:
+       print("Accuracy: %0.4f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
+       print("\n\n")
        
 #If it's to be used as module in other python script the main won't execute
 if __name__ == "__main__":
